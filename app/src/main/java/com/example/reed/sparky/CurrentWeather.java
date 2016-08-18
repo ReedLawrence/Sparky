@@ -11,6 +11,24 @@ public class CurrentWeather {
     private double mPrecipChance;
     private String mSummary;
 
+    public  CurrentWeather() {
+        setIcon(null);
+        setTime(0);
+        setTemperature(0.0);
+        setHumidity(0.0);
+        setPrecipChance(0.0);
+        setSummary(null);
+    }
+
+    public CurrentWeather(String icon, long time, double temperature, double humidity, double precipChance, String summary){
+        setIcon(icon);
+        setTime(time);
+        setTemperature(temperature);
+        setHumidity(humidity);
+        setPrecipChance(precipChance);
+        setSummary(summary);
+    }
+
     public String getIcon() {
         return mIcon;
     }
