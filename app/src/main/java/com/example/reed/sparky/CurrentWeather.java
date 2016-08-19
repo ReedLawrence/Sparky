@@ -1,7 +1,11 @@
 package com.example.reed.sparky;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.TimeZone;
+
 /**
- * Created by reed_ on 8/18/2016.
+ * Created by Reed Lawrence on 8/18/2016.
  */
 public class CurrentWeather {
     private String mIcon;
@@ -10,6 +14,15 @@ public class CurrentWeather {
     private double mHumidity;
     private double mPrecipChance;
     private String mSummary;
+    private String mTimeZone;
+
+    public String getTimeZone() {
+        return mTimeZone;
+    }
+
+    public void setTimeZone(String timeZone) {
+        mTimeZone = timeZone;
+    }
 
     public  CurrentWeather() {
         setIcon(null);
@@ -18,15 +31,17 @@ public class CurrentWeather {
         setHumidity(0.0);
         setPrecipChance(0.0);
         setSummary(null);
+        setTimeZone(null);
     }
 
-    public CurrentWeather(String icon, long time, double temperature, double humidity, double precipChance, String summary){
+    public CurrentWeather(String icon, long time, double temperature, double humidity, double precipChance, String summary, String timeZone){
         setIcon(icon);
         setTime(time);
         setTemperature(temperature);
         setHumidity(humidity);
         setPrecipChance(precipChance);
         setSummary(summary);
+        setTimeZone(timeZone);
     }
 
     public String getIcon() {
@@ -37,8 +52,45 @@ public class CurrentWeather {
         mIcon = icon;
     }
 
+    public int getIconID() {
+        //clear-day, clear-night, rain, snow, sleet, wind, fog, cloudy, partly-cloudy-day, or partly-cloudy-night
+        int iconID = R.drawable.clear_day;
+        if(getIcon().equals("clear-day")){
+            iconID = R.drawable.clear_day;
+        } else if(getIcon().equals("clear-night")){
+            iconID = R.drawable.clear_night;
+        } else if(getIcon().equals("rain")){
+            iconID = R.drawable.rain;
+        } else if(getIcon().equals("snow")){
+            iconID = R.drawable.snow;
+        } else if(getIcon().equals("sleet")){
+            iconID = R.drawable.sleet;
+        } else if(getIcon().equals("wind")){
+            iconID = R.drawable.wind;
+        } else if(getIcon().equals("fog")){
+            iconID = R.drawable.fog;
+        } else if(getIcon().equals("cloudy")){
+            iconID = R.drawable.cloudy;
+        } else if(getIcon().equals("partly-cloudy-day")){
+            iconID = R.drawable.partly_cloudy;
+        } else if(getIcon().equals("partly-cloudy-night")){
+            iconID = R.drawable.cloudy_night;
+        }
+        return iconID;
+    }
+
     public long getTime() {
         return mTime;
+    }
+
+    public String getFormattedTime() {
+        SimpleDateFormat formatter = new SimpleDateFormat("h:mm a");
+        formatter.setTimeZone(TimeZone.getTimeZone(getTimeZone()));
+        return formatter.format(new Date(getTime() * 1000));
+        /*
+        String timeString = formatter.format(new Date(getTime() * 1000));
+        return timeString;
+        */
     }
 
     public void setTime(long time) {

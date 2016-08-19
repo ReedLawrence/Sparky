@@ -81,7 +81,8 @@ public class MainActivity extends AppCompatActivity {
                 currently.getDouble("temperature"),
                 currently.getDouble("humidity"),
                 currently.getDouble("precipProbability"),
-                currently.getString("summary"));
+                currently.getString("summary"),
+                forecast.getString("timezone"));
         return today;
     }
 
