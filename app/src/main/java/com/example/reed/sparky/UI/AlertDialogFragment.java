@@ -1,10 +1,12 @@
-package com.example.reed.sparky;
+package com.example.reed.sparky.UI;
 
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.app.DialogFragment;
 import android.content.Context;
 import android.os.Bundle;
+
+import com.example.reed.sparky.R;
 
 /**
  * Created by reed_ on 8/17/2016.

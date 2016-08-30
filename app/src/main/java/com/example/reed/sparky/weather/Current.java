@@ -1,4 +1,6 @@
-package com.example.reed.sparky;
+package com.example.reed.sparky.weather;
+
+import com.example.reed.sparky.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -7,7 +9,7 @@ import java.util.TimeZone;
 /**
  * Created by Reed Lawrence on 8/18/2016.
  */
-public class CurrentWeather {
+public class Current {
     private String mIcon;
     private long mTime;
     private double mTemperature;
@@ -24,7 +26,7 @@ public class CurrentWeather {
         mTimeZone = timeZone;
     }
 
-    public  CurrentWeather() {
+    public Current() {
         setIcon(null);
         setTime(0);
         setTemperature(0.0);
@@ -34,7 +36,7 @@ public class CurrentWeather {
         setTimeZone(null);
     }
 
-    public CurrentWeather(String icon, long time, double temperature, double humidity, double precipChance, String summary, String timeZone){
+    public Current(String icon, long time, double temperature, double humidity, double precipChance, String summary, String timeZone){
         setIcon(icon);
         setTime(time);
         setTemperature(temperature);
