@@ -7,7 +7,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context=".UI.MainActivity"
-    android:background="#FFFC970B">
+    android:background="@drawable/bg_gradient">
 
     <TextView
         android:layout_width="wrap_content"
@@ -160,7 +160,8 @@
             android:id="@+id/hourlyButton"
             android:layout_weight="1"
             android:background="#40FFFFFF"
-            android:textColor="#FFFFFFFF"/>
+            android:textColor="#FFFFFFFF"
+            android:layout_marginRight="2dp"/>
 
         <Button
             android:layout_width="match_parent"
@@ -169,6 +170,7 @@
             android:id="@+id/dailyButton"
             android:layout_weight="1"
             android:textColor="#FFFFFFFF"
-            android:background="#40FFFFFF"/>
+            android:background="#40FFFFFF"
+            android:layout_marginLeft="2dp"/>
     </LinearLayout>
 </RelativeLayout>

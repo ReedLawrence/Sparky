@@ -1,6 +1,7 @@
 package com.example.reed.sparky.UI;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
@@ -8,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -33,6 +35,8 @@ import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
     public static final String TAG = MainActivity.class.getSimpleName();
+    public static final String DAILY_FORECAST = "DAILY_FORECAST";
+    public static final String HOURLY_FORECAST = "HOURLY_FORECAST";
     private Forecast mForecast;
     private TextView mTemperatureLabel;
     private TextView mTimeLabel;
@@ -43,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
     private TextView mSummary;
     private ImageView mRefreshImageView;
     private ProgressBar mRefreshProgressBar;
+    private Button mHourlyButton;
+    private Button mDailyButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +64,8 @@ public class MainActivity extends AppCompatActivity {
         mSummary = (TextView) findViewById(R.id.summary);
         mRefreshImageView = (ImageView) findViewById(R.id.refreshImageView);
         mRefreshProgressBar = (ProgressBar) findViewById(R.id.refreshProgressBar);
+        mDailyButton = (Button) findViewById(R.id.dailyButton);
+        mHourlyButton = (Button) findViewById(R.id.hourlyButton);
 
         mRefreshProgressBar.setVisibility(View.INVISIBLE);
 
@@ -68,6 +76,26 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 getForcast(latitude, longitude);
+            }
+        });
+
+        mDailyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, DailyForecastActivity.class);
+                intent.putExtra(DAILY_FORECAST, mForecast.getDailyForecast());
+                startActivity(intent);
+            }
+
+
+        });
+
+        mHourlyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, DailyForecastActivity.class);
+                intent.putExtra(HOURLY_FORECAST, mForecast.getHourlyForecast());
+                startActivity(intent);
             }
         });
 

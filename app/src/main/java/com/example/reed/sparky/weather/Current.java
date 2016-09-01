@@ -55,30 +55,7 @@ public class Current {
     }
 
     public int getIconID() {
-        //clear-day, clear-night, rain, snow, sleet, wind, fog, cloudy, partly-cloudy-day, or partly-cloudy-night
-        int iconID = R.drawable.clear_day;
-        if(getIcon().equals("clear-day")){
-            iconID = R.drawable.clear_day;
-        } else if(getIcon().equals("clear-night")){
-            iconID = R.drawable.clear_night;
-        } else if(getIcon().equals("rain")){
-            iconID = R.drawable.rain;
-        } else if(getIcon().equals("snow")){
-            iconID = R.drawable.snow;
-        } else if(getIcon().equals("sleet")){
-            iconID = R.drawable.sleet;
-        } else if(getIcon().equals("wind")){
-            iconID = R.drawable.wind;
-        } else if(getIcon().equals("fog")){
-            iconID = R.drawable.fog;
-        } else if(getIcon().equals("cloudy")){
-            iconID = R.drawable.cloudy;
-        } else if(getIcon().equals("partly-cloudy-day")){
-            iconID = R.drawable.partly_cloudy;
-        } else if(getIcon().equals("partly-cloudy-night")){
-            iconID = R.drawable.cloudy_night;
-        }
-        return iconID;
+        return Forecast.getIconId(getIcon());
     }
 
     public long getTime() {
